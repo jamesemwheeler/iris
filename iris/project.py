@@ -14,6 +14,7 @@ from skimage.io import imread
 import yaml
 import rasterio as rio
 
+
 class Project:
     def __init__(self):
         # Each user is going to get a personalised random sequence of images:
@@ -190,12 +191,12 @@ class Project:
                 for k, v in path_or_paths.items()
             }
         elif isinstance(path_or_paths, list):
-            return list(map(self.make_absolute, path_or_paths)
+            return list(map(self.make_absolute, path_or_paths))
 
         if isabs(path_or_paths):
             return path_or_paths
         else:
-            return normpath(join(dirname(self.file), path))
+            return normpath(join(dirname(self.file), path_or_paths))
 
     @property
     def segmentation(self):
