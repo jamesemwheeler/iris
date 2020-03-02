@@ -371,7 +371,16 @@ class Project:
         return imread(filename)
 
     def get_user_config(self, default=False):
-
+        def selective_merge(base_obj, delta_obj):
+            if not isinstance(base_obj, dict):
+                return delta_obj
+            common_keys = set(base_obj).intersection(delta_obj)
+            new_keys = set(delta_obj).difference(common_keys)
+            for k in common_keys:
+                base_obj[k] = selective_merge(base_obj[k], delta_obj[k])
+            for k in new_keys:
+                base_obj[k] = delta_obj[k]
+            return base_obj
         default_filename = join(dirname(__file__), 'user/default_config.json')
         with open(default_filename, 'r') as stream:
             user_config = json.load(stream)
@@ -379,11 +388,8 @@ class Project:
         filename = join(self['path'], 'user_config', f'{self.user_id}.json')
         if exists(filename) and not default:
             with open(filename, 'r') as stream:
-                user_config = {
-                    **user_config,
-                    json.load(stream)
-                }
-
+                user_config2 = json.load(stream)
+                user_config = selective_merge(user_config, user_config2)
         return user_config
 
     def save_user_config(self, user_config):
