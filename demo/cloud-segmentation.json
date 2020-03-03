@@ -3,8 +3,7 @@
   "authentication_required": true,
   "images": {
       "path": {
-          "Sentinel1": "images/{id}/s1.tif",
-          "Sentinel2": "images/{id}/s2.tif"
+          "Sentinel1": "images/{id}/image.tif"
       },
       "shape": [512, 512],
       "thumbnails": "images/{id}/thumbnail.png",
@@ -70,7 +69,7 @@
       "Bing": {
           "description": "Aerial Imagery",
           "type": "bingmap"
-      },
+      }
   },
   "view_groups": {
       "default": ["Cirrus", "RGB", "Snow"]

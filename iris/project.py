@@ -6,7 +6,7 @@ from numbers import Number
 import os
 from os.path import basename, dirname, exists, isabs, join, normpath
 import re
-
+from matplotlib import cm
 import flask
 import json
 import numpy as np
@@ -179,7 +179,6 @@ class Project:
                 f'[ERROR] Could not extract id\nfrom path"{image_path}"\nwith regex "{regex_images}"!'
             )
 
-
     def make_absolute(self, path_or_paths):
         """Make path absolute relatively from project path"""
         if not path_or_paths:
@@ -320,11 +319,10 @@ class Project:
 
         return rgb_bands
 
-
     def _get_render_environment(self, image):
         return {
             'max': np.max,
-            'max': np.min,
+            'min': np.min,
             'mean': np.mean,
             'median': np.median,
             'log': np.log,
@@ -426,5 +424,6 @@ class Project:
         self.image_order = list(range(len(self.image_ids)))
 
         self.random_state.shuffle(self.image_order)
+
 
 project = Project()
