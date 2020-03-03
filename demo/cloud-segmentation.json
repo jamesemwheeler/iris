@@ -49,7 +49,7 @@
       "Cirrus": {
           "description": "Cirrus and high clouds are red.",
           "type": "image",
-          "data": "print('hello');$Sentinel2.B11**0.8*5",
+          "data": "$Sentinel2.B11**0.8*5",
           "cmap": "jet"
       },
       "RGB": {
