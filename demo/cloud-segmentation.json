@@ -3,7 +3,8 @@
   "authentication_required": true,
   "images": {
       "path": {
-          "Sentinel1": "images/{id}/image.tif"
+          "Sentinel1": "images/{id}/s1.tif",
+          "Sentinel2": "images/{id}/s2.tif"
       },
       "shape": [512, 512],
       "thumbnails": "images/{id}/thumbnail.png",
