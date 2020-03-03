@@ -70,7 +70,7 @@
       "Bing": {
           "description": "Aerial Imagery",
           "type": "bingmap"
-      },
+      }
   },
   "view_groups": {
       "default": ["Cirrus", "RGB", "Snow"]
